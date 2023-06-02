@@ -71,22 +71,22 @@ class Marcas extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $marca = new EducationLevel;
+        // $data = $request->all();
+        // $marca = new EducationLevel;
         
-        $marca->name = $data['name'];
-        $marca->description = $data['description'];
+        // $marca->name = $data['name'];
+        // $marca->description = $data['description'];
         
-        // Guardar el nivel en la base de datos
-        $marca->save();
+        // // Guardar el nivel en la base de datos
+        // $marca->save();
         
-        return redirect()->back()->with('success', 'Estado de Nivel educativo creado exitosamente.');
-        // return back()->with('message', [
-        //     'text' => 'Estado de Nivel educativo creado exitosamente.',
-        //     'icon' => 'success',
-        //     'txtp' => 'Exito',
-        //     'route' => route('admin.marcas.index'),
-        // ]);
+        // return redirect()->back()->with('success', 'Estado de Nivel educativo creado exitosamente.');
+        // // return back()->with('message', [
+        // //     'text' => 'Estado de Nivel educativo creado exitosamente.',
+        // //     'icon' => 'success',
+        // //     'txtp' => 'Exito',
+        // //     'route' => route('admin.marcas.index'),
+        // // ]);
     }
 
 
