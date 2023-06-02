@@ -2,11 +2,21 @@
 use App\Charts\SampleChart;
 use App\Http\Controllers\ChartJsController;
 use Illuminate\Support\Facades\Route;
+use Carbon\Carbon;
 
 use App\Http\Controllers\SignedRouteController;
 use App\Http\Controllers\Forgotten;
 use App\Http\Controllers\Comentarios;
-
+use App\Models\User;
+use App\Models\Grade;
+use App\Models\Coments;
+use App\Models\Niveledu;
+use App\Models\Rol;
+use App\Models\Section;
+use App\Models\Lesson;
+use App\Models\Group;
+use App\Models\Evaluation;
+use App\Models\Encuestas;
 use App\Http\Controllers\Admin\{
     ProfileController,
     MailSettingController,
@@ -59,8 +69,26 @@ Route::get('/chartjs', function () {
 // Admin routes
 Route::get('/admin/dashboard', function () {
    
-   
-    return view('dashboard');
+
+    $totalUsers = User::count();
+    $totalGrades = Grade::count();
+    $totalSeccion = Section::count();
+    $currentDate = Carbon::now();
+    $totalNivel = 5;
+    $totalRol = Rol::count();
+    $totalComentarios = 3;
+
+    $adminCount = 3;
+    $ultimasEncuestas = Encuestas::latest()->take(5)->get();
+
+    //return view('home.index', ['currentDate' => $currentDate]);
+    return view('dashboard', ['totalUsers' => $totalUsers,'currentDate' => $currentDate,
+    'totalComentarios' => $totalComentarios, 'totalRol' => $totalRol,
+    'totalNivel' => $totalNivel,'totalSeccion' => $totalSeccion,
+    'totalGrades' => $totalGrades,'adminCount' => $adminCount,
+    'ultimasEncuestas' => $ultimasEncuestas,
+]);
+    //return view('dashboard');
 })->middleware(['auth'])->name('admin.dashboard');
 
 require __DIR__.'/auth.php';

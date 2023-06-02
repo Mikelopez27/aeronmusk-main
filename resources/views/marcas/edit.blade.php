@@ -37,5 +37,21 @@
             </div>
         </main>
     </div>
+    @if (Session::has('message'))
+    <script>
+        var message = @json(Session::get('message'));
+        swal({
+            title: message.txtp,
+            text: message.text,
+            icon: message.icon,
+            button: {
+                text: "Aceptar",
+                closeModal: false,
+            },
+        }).then(function() {
+            window.location.href = message.route;
+        });
+    </script>
+@endif
 </div>
 </x-app-layout>

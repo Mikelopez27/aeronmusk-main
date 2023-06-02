@@ -76,7 +76,14 @@ class UserController extends Controller
             'rol_id' => $request->input('roles')[0]
         ]);
         $user->syncRoles($request->roles);
-        return redirect()->back()->withSuccess('Usuario Creado!');
+
+        return back()->with('message', [
+            'text' => 'El usuario ha sido creado con éxito',
+            'icon' => 'success',
+            'txtp' => 'Exito',
+            'route' => route('admin.users.index'),
+        ]);
+        
     }
 
     /**
@@ -131,7 +138,12 @@ class UserController extends Controller
         $user->update($validated);
 
         $user->syncRoles($request->roles);
-        return redirect()->back()->withSuccess('Usuario Actualizado');
+        return back()->with('message', [
+            'text' => 'El usuario ha sido actualizado con éxito',
+            'icon' => 'success',
+            'txtp' => 'Exito',
+            'route' => route('admin.users.index'),
+        ]);
     }
 
     /**

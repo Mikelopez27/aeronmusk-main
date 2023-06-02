@@ -36,7 +36,7 @@
                           @endcan
 
                           @can('User delete')
-                          <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline">
+                          <form id="#forme" action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="inline">
                               @csrf
                               @method('delete')
                               <button class="text-grey-lighter font-bold py-1 px-3 rounded text-xs bg-blue hover:bg-blue-dark text-red-400">Eliminar</button>
@@ -50,6 +50,9 @@
 
                   </tbody>
                 </table>
+               
+
+
               </div>
   
             </div>
@@ -57,3 +60,5 @@
     </div>
 </div>
 </x-app-layout>
+
+

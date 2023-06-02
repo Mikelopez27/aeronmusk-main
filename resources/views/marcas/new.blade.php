@@ -28,7 +28,7 @@
                 </div>
               </div>
 
-              @if(Session::has('message'))
+              <!-- @if(Session::has('message'))
 <script >
 
     swal("Message","{{Session::get('message')}}",'success',{
@@ -38,7 +38,23 @@
     })
  
   </script>
-  @endif
+  @endif -->
+  @if (Session::has('message'))
+    <script>
+        var message = @json(Session::get('message'));
+        swal({
+            title: message.txtp,
+            text: message.text,
+            icon: message.icon,
+            button: {
+                text: "Aceptar",
+                closeModal: false,
+            },
+        }).then(function() {
+            window.location.href = message.route;
+        });
+    </script>
+@endif
             </div>
         </main>
     </div>

@@ -81,7 +81,12 @@ class Marcas extends Controller
         $marca->save();
         
         return redirect()->back()->with('success', 'Estado de Nivel educativo creado exitosamente.');
-        
+        // return back()->with('message', [
+        //     'text' => 'Estado de Nivel educativo creado exitosamente.',
+        //     'icon' => 'success',
+        //     'txtp' => 'Exito',
+        //     'route' => route('admin.marcas.index'),
+        // ]);
     }
 
 

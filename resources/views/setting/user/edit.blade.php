@@ -49,7 +49,7 @@
                             <div class="flex flex-col space-y-2 col-span-2">
                                 <label for="password" class="text-gray-700 select-none font-medium">Password</label>
                                 <input id="password" type="password" name="password" value="{{ old('password') }}"
-                                    placeholder="Enter password"
+                                    placeholder="Escribe contraseña"
                                     class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
                                 />
                             </div>
@@ -57,7 +57,7 @@
                             <div class="flex flex-col space-y-2 col-span-2">
                                 <label for="password_confirmation" class="text-gray-700 select-none font-medium">Confirm Password</label>
                                 <input id="password_confirmation" type="password" name="password_confirmation"
-                                    placeholder="Re-enter password"
+                                    placeholder="Rescribe contraseña"
                                     class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-200"
                                 />
                             </div>
@@ -74,7 +74,7 @@
                         <div class="text-center mt-16 mb-16">
                             <button type="submit"
                                 class="bg-blue-500 text-white font-bold px-5 py-1 rounded focus:outline-none shadow hover:bg-blue-500 transition-colors">
-                                Submit
+                                Actualizar
                             </button>
                         </div>
                     </form>
@@ -82,6 +82,22 @@
             </div>
         </main>
     </div>
+    @if (Session::has('message'))
+    <script>
+        var message = @json(Session::get('message'));
+        swal({
+            title: message.txtp,
+            text: message.text,
+            icon: message.icon,
+            button: {
+                text: "Aceptar",
+                closeModal: false,
+            },
+        }).then(function() {
+            window.location.href = message.route;
+        });
+    </script>
+@endif
 </x-app-layout>
 
 
